@@ -73,7 +73,7 @@
             <Button Content="3" Grid.Column="2" Grid.Row="3"  Click="ClickNumber"/>
             <Button Style="{StaticResource OperationButton}" Content="+" Grid.Column="3" Grid.Row="3"  Click="ClickOperation"/>
 
-            <Button Content="0" Grid.Column="1" Grid.Row="4"  Click="ClickNumber"/>
+            <Button Content="0" Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="2" Click="ClickNumber" Margin="10,5,10,0" Width="Auto"/>
             <Button Content="," Grid.Column="2" Grid.Row="4"  Click="ClickNumber"/>
             <Button Style="{StaticResource OperationButton}" Content="=" Grid.Column="3" Grid.Row="4"  Click="ClickResult"/>
         </Grid>
