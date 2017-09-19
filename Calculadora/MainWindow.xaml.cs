@@ -1,17 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Calculadora
 {
@@ -41,54 +31,12 @@ namespace Calculadora
 
         }
 
-        private void ProcessNumber(string number)
-        {
-            if (!StartsWithZero(number))
-            {
-
-                if (finishedOperation)
-                {
-                    firstNumber = "";
-                    secondNumber = "";
-                    isFirstNumber = true;
-                    CurrentOperation.Content = "";
-                }
-
-                if (!isFirstNumber)
-                {
-                    secondNumber += number;
-                    DisplayTxt.Text = secondNumber;
-                }
-                else
-                {
-                    firstNumber += number;
-                    DisplayTxt.Text = firstNumber;
-                }
-
-                finishedOperation = false;
-            }
-        }
-
         private void ClickOperation(object sender, RoutedEventArgs e)
         {
             var button = sender as Button;
             string op = button.Content.ToString();
 
             ProcessOp(op);
-        }
-
-        private void ProcessOp(string op)
-        {
-            operation = op;
-            isFirstNumber = false;
-            finishedOperation = false;
-            DisplayTxt.Text = "";
-            CurrentOperation.Content = firstNumber + " " + operation;
-        }
-
-        private bool IsValidOperation()
-        {
-            return !firstNumber.Equals("") && !secondNumber.Equals("");
         }
 
         private void ClickResult(object sender, RoutedEventArgs e)
@@ -168,6 +116,48 @@ namespace Calculadora
             }
             DisplayTxt.Text = "";
 
+        }
+
+        private void ProcessNumber(string number)
+        {
+            if (!StartsWithZero(number))
+            {
+
+                if (finishedOperation)
+                {
+                    firstNumber = "";
+                    secondNumber = "";
+                    isFirstNumber = true;
+                    CurrentOperation.Content = "";
+                }
+
+                if (!isFirstNumber)
+                {
+                    secondNumber += number;
+                    DisplayTxt.Text = secondNumber;
+                }
+                else
+                {
+                    firstNumber += number;
+                    DisplayTxt.Text = firstNumber;
+                }
+
+                finishedOperation = false;
+            }
+        }
+
+        private void ProcessOp(string op)
+        {
+            operation = op;
+            isFirstNumber = false;
+            finishedOperation = false;
+            DisplayTxt.Text = "";
+            CurrentOperation.Content = firstNumber + " " + operation;
+        }
+
+        private bool IsValidOperation()
+        {
+            return !firstNumber.Equals("") && !secondNumber.Equals("");
         }
 
         private bool StartsWithZero(string value)
@@ -252,7 +242,7 @@ namespace Calculadora
             }
             else if ((e.Key == Key.Enter))
             {
-                ClickResult(null,null);
+                ClickResult(null, null);
             }
 
         }
